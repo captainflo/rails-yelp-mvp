@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h1><%= @restaurant.name %></h1>
+      <p><i class="fa fa-home" aria-hidden="true"></i> <%= @restaurant.address %></p>
+      <p><i class="fa fa-phone" aria-hidden="true"></i> <%= @restaurant.phone_number%></p>
+      <p><i class="fa fa-cutlery" aria-hidden="true"></i> <%= @restaurant.category %></p>
+    <% @restaurant.reviews.each do |review| %>
+     <p><%= review.rating%></p>
+     <p><%= review.content%></p>
+     <hr>
+      <% end %>
+
+      <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, restaurant_path(@restaurant),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+
+      <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_restaurant_path(@restaurant)%>
+      <%= link_to '<i class="fa fa-home" aria-hidden="true"></i>'.html_safe, restaurants_path(@restaurant) %>
+    </div>
+  </div>
+</div>
